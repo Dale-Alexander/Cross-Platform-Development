@@ -11,19 +11,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                const Color.fromARGB(255, 3, 84, 15),
-                const Color.fromARGB(255, 41, 137, 226),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-          child: Center(child: Text('Hello World!')),
-        ),
+        body: GradientBackground.custom(c2: Color.green, c1: Colors.yellow, child: const Center(child: Text('Hello World!')))
       ),
     );
   }

@@ -1,0 +1,1 @@
+@C:\flutterSDK\flutter\bin\flutter %*
