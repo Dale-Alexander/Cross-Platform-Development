@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/data/questions.dart';
 import 'package:quiz/gradient_background.dart';
 import 'package:quiz/screens/question_screen.dart';
+import 'package:quiz/screens/result_screen.dart';
 import 'package:quiz/screens/start_screen.dart';
 
 void main() {
@@ -33,6 +35,15 @@ class HostingQuiz extends StatefulWidget {
 
 class _HostingQuizState extends State<HostingQuiz> {
   String activeScreen = 'start';
+  List<String> submittedAnswers = [];
+
+  void submitAnswer(String userAnswer) {
+    submittedAnswers.add(userAnswer);
+    if (submittedAnswers.length >= questions.length) {
+      changeScreen('results');
+    }
+    print("${userAnswer} : ${submittedAnswers.length}");
+  }
 
   void changeScreen(String screen) {
     setState(() {
@@ -57,7 +68,10 @@ class _HostingQuizState extends State<HostingQuiz> {
         );
         break;
       case 'question':
-        _currentScreen = QuestionScreen();
+        _currentScreen = QuestionScreen(onAnswer: submitAnswer);
+        break;
+      case 'results':
+        _currentScreen = ResultScreen();
         break;
     }
 
